@@ -12,13 +12,20 @@ User = get_user_model()
 
 
 class Location(BaseModel):
+    """
+    Модель для представления местоположения.
+
+    Атрибуты:
+    - name: Название места (строка).
+    """
+
     name = models.CharField(
         max_length=MAX_LENGTH_TITLE,
         verbose_name='Название места'
     )
 
     class Meta(BaseModel.Meta):
-        verbose_name = 'местоположение'
+        verbose_name = 'Местоположение'
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
@@ -26,6 +33,15 @@ class Location(BaseModel):
 
 
 class Category(BaseModel):
+    """
+    Модель для представления категории поста.
+
+    Атрибуты:
+    - title: Заголовок категории (строка).
+    - description: Описание категории (текст).
+    - slug: Уникальный идентификатор для URL (строка).
+    """
+
     title = models.CharField(
         max_length=MAX_LENGTH_TITLE,
         verbose_name='Заголовок'
@@ -51,6 +67,20 @@ class Category(BaseModel):
 
 
 class Post(BaseModel):
+    """
+    Модель для представления поста.
+
+    Атрибуты:
+    - title: Заголовок поста (строка).
+    - text: Текст поста (текст).
+    - pub_date: Дата и время публикации (дата/время).
+    - author: Автор публикации (внешний ключ на User).
+    - location: Местоположение поста
+      (внешний ключ на Location, может быть пустым).
+    - category: Категория поста
+      (внешний ключ на Category, может быть пустым).
+    """
+
     title = models.CharField(
         max_length=MAX_LENGTH_TITLE,
         verbose_name='Заголовок'
