@@ -5,6 +5,9 @@ from .constants import MAX_POSTS_PER_PAGE
 
 
 def index(request):
+    """
+    Главная страница блога с опубликованными постами.
+    """
     return render(
         request,
         'blog/index.html',
@@ -13,6 +16,9 @@ def index(request):
 
 
 def post_detail(request, post_id):
+    """
+    Детальная страница поста по его идентификатору.
+    """
     return render(
         request,
         'blog/detail.html',
@@ -21,6 +27,10 @@ def post_detail(request, post_id):
 
 
 def category_posts(request, category_slug):
+    """
+    Страница категории с постами,
+    относящимися к указанной категории.
+    """
     return render(
         request,
         'blog/category.html',
