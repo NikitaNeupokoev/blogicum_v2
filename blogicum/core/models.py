@@ -2,6 +2,14 @@ from django.db import models
 
 
 class BaseModel(models.Model):
+    """
+    Абстрактная базовая модель для других моделей.
+
+    Добавляет поля:
+    - is_published: статус публикации.
+    - created_at: дата создания записи.
+    """
+
     is_published = models.BooleanField(
         default=True,
         verbose_name='Опубликовано',
