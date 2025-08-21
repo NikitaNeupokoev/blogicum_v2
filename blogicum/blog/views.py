@@ -6,7 +6,8 @@ from .constants import MAX_POSTS_PER_PAGE
 
 def index(request):
     """
-    Главная страница блога с опубликованными постами.
+    Главная страница блога с
+    опубликованными постами.
     """
     return render(
         request,
@@ -17,12 +18,16 @@ def index(request):
 
 def post_detail(request, post_id):
     """
-    Детальная страница поста по его идентификатору.
+    Детальная страница поста
+    по его идентификатору.
     """
     return render(
         request,
         'blog/detail.html',
-        {'post': get_object_or_404(Post.published, id=post_id)}
+        {'post': get_object_or_404(
+            Post.published,
+            id=post_id
+        )}
     )
 
 
@@ -43,6 +48,8 @@ def category_posts(request, category_slug):
             'post_list': get_object_or_404(
                 Category,
                 slug=category_slug,
-                is_published=True).posts(manager='published').all()
+                is_published=True).posts(
+                manager='published'
+            ).all()
         }
     )
